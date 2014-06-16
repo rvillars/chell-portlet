@@ -1,0 +1,35 @@
+.box-borderless > h4.box-header {
+  background: transparent;
+  padding: 0px;
+  color: #d3d3d3;
+}
+.box-borderless > h4.box-header > a {
+  color: #d3d3d3;
+}
+.box-borderless > .box-container-toggle > .box-content {
+  padding: 0px;
+}
+.box-borderless > .box-container-toggle > .box-content a > i {
+  color: #d3d3d3;
+}
+.box-borderless > .box-header {
+  opacity: 0;
+}
+.box-borderless > .box-container-toggle {
+  border-color: white;
+  margin-top: -20px;
+}
+.box-borderless:hover > .box-header {
+  opacity: 1;
+}
+.box-borderless:hover > .box-container-toggle {
+  border-color: #DDD;
+  margin-top: 0px;
+}
+.box-borderless.box-locked > .box-header {
+  display: none;
+}
+.box-borderless.box-locked > .box-container-toggle {
+  border-color: white;
+  margin-top: 0px;
+}

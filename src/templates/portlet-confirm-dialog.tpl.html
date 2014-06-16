@@ -1,0 +1,14 @@
+<!-- Dialog for the config button on the portlets-->
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()">×</button>
+        <h3>Are you sure?</h3>
+    </div>
+    <div class="modal-body">
+        {{message}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">Ok</button>
+        <button class="btn" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

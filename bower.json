@@ -1,0 +1,11 @@
+{
+    "name": "chell-portlet",
+    "version": "0.0.1",
+    "main": [
+       "chell-portlet.js"
+    ],
+    "dependencies": {},
+    "devDependencies": {
+        "angular": "~1.2"
+    }
+}

@@ -1,0 +1,27 @@
+<!-- Dialog for the config button on the portlets-->
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()">×</button>
+        <h3>Adjust widget</h3>
+    </div>
+    <div class="modal-body">
+        <tabset>
+            <tab heading="Portlet Config">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="config.borderless"> Borderless
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="config.pinned"> Pinned
+                    </label>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">Save Changes</button>
+        <button class="btn" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
