@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="chell-portlet-example1">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>chell-portlet Example 1</title>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="../<%= file %>"></script><% }); %>
+
+    <script type="text/javascript" src="../chell-portlet.js"></script>
+    <script type="text/javascript" src="example1.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../bower-components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/chell-portlet.css"/>
+
+</head>
+<body style="padding-top: 20px;">
+<div chell-portlet-container>
+    <!-- Portlet Set 1 -->
+    <div class="col-md-4 column" id="col1">
+        <chell-portlet title="Fancy Portlets">
+            <h2>Fancy Portlets</h2>
+
+            <p>
+                Draggable porlets which look cool and make you able to setup you desktop more flexible.
+                These portlets on its own integrate very nicely with the rest of the site.
+                You can use the grid controls to setup sizes for portlets.
+                And all the normal style options are available in the boxes.
+            </p>
+        </chell-portlet>
+        <!-- Portlet: State Saving -->
+        <chell-portlet title="State Saving">
+            <h2>State Saving</h2>
+
+            <p>
+                Rearanging your portlets has no use if you have to do it over and over again.
+                That is why Admin Intenso saves the state of you portlet.
+                You reposition everything the way you want it and hit refresh.
+                What you will see that the desktop is remembering where you placed the portlets.
+            </p>
+        </chell-portlet>
+    </div>
+
+    <!-- Portlet Set 2 -->
+    <div class="col-md-4 column" id="col2">
+        <!-- Portlet: Collapsible -->
+        <chell-portlet title="Collapsible">
+            <h2>Collapsible</h2>
+
+            <p>
+                Each individual box kan be collapsed when there is no need to display the
+                data everytime and to save up the extra space for the other boxes.
+                An extra feature that AdminIntenso is offering is that the collapsed
+                state is also remembered when refresjing the page.
+            </p>
+        </chell-portlet>
+        <!-- Portlet: Buttons -->
+        <chell-portlet title="Buttons">
+            <h2>Buttons</h2>
+
+            <p>
+                One these boxes you can see different types of buttons each having it's own function.
+                In some cases you might not want all those buttons.
+                So AdminIntenso is flexible enough to leave out some of the buttons.
+                This can be different for each box on the page.
+            </p>
+        </chell-portlet>
+    </div>
+
+    <!-- Portlet Set 3 -->
+    <div class="col-md-4 column" id="col3">
+        <!-- Portlet: Close Button -->
+        <chell-portlet title="Close Button">
+            <h2>Close Button</h2>
+
+            <p>
+                All these boxes contain a set of buttons the button on the far right is the close button.
+                Which can be used to close the box. When clicking the button you only need to confirm or cancelled.
+                Also here AdminIntenso offers the option of storing the state of closed boxes.
+                So next time you refreshed the boxes are still removed from the page.
+            </p>
+        </chell-portlet>
+        <!-- Portlet: Settings Button -->
+        <chell-portlet title="Fancy Portlets">
+            <h2>Settings Button</h2>
+
+            <p>
+                The settings button is an extra feature which pops up a dialog which can be used for
+                inputing spefic settings for data in the box. This way the user has even more flexibillity
+                on how the boxes on the dashboard behave.
+            </p>
+        </chell-portlet>
+    </div>
+</div>
+</body>
+</html>

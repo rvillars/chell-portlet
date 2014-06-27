@@ -2,6 +2,7 @@
 // Source: build/module.js
 var chellPortlet = angular.module('chell-portlet', [
     'templates-chell-portlet',
+    'ui.bootstrap',
     'ui.sortable',
     'ui.utils'
   ]);;// Source: build/directives.js
@@ -282,7 +283,7 @@ angular.module("templates/portlet.tpl.html", []).run(["$templateCache", function
     "        <a class=\"box-btn btn-xs\" ng-click=\"close()\"><i class=\"glyphicon glyphicon-remove\"></i></a>\n" +
     "        <a class=\"box-btn btn-xs\" ng-click=\"toggleFullscreen()\"><i class=\"glyphicon\" ng-class=\"{'glyphicon-resize-full': !fullscreen, 'glyphicon-resize-small': fullscreen}\"></i></a>\n" +
     "        <a class=\"box-btn btn-xs\" ng-click=\"toggleMinimized()\"><i class=\"glyphicon\" ng-class=\"{'glyphicon-minus': !minimized, 'glyphicon-plus': minimized}\"></i></a>\n" +
-    "        <a visibility-role-id=\"1\" class=\"box-btn btn-xs\" ng-click=\"config()\"><i class=\"glyphicon glyphicon-cog\"></i></a>\n" +
+    "        <a class=\"box-btn btn-xs\" ng-click=\"config()\"><i class=\"glyphicon glyphicon-cog\"></i></a>\n" +
     "    </h4>\n" +
     "\n" +
     "    <div class=\"box-container-toggle\" ng-class=\"{'box-container-closed': minimized}\">\n" +
