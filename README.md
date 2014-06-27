@@ -1,4 +1,4 @@
-chell-portlet
+chell-portlet [![Build Status](https://travis-ci.org/mimacom/chell-portlet.svg?branch=master)](https://travis-ci.org/mimacom/chell-portlet)
 =============
 Installation/Build
 ------------------

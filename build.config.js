@@ -12,6 +12,7 @@ module.exports = {
 
         // AngularJS
         'bower-components/angular/angular.js',
+        'bower-components/angular-mocks/angular-mocks.js',
 
         //AnglularUI
         'bower-components/angular-bootstrap/ui-bootstrap-tpls.js',
