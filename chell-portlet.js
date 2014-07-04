@@ -60,6 +60,13 @@ chellPortlet.directive('chellPortletContainer', function () {
     }
   };
 });
+chellPortlet.directive('chellIframe', function () {
+  return {
+    restrict: 'E',
+    controller: 'IframeController',
+    templateUrl: 'templates/iframe.tpl.html'
+  };
+});
 chellPortlet.directive('chellPortletTemplate', function () {
   return {
     restrict: 'E',
@@ -215,8 +222,97 @@ chellPortlet.controller('SortableController', [
       $scope.portlets = $scope.origPortlets.slice();
     };
   }
+]);
+chellPortlet.controller('IframeController', [
+  '$scope',
+  '$modal',
+  '$attrs',
+  '$sce',
+  function ($scope, $modal, $attrs, $sce) {
+    $scope.config = {};
+    $scope.config.src = $attrs.src;
+    $scope.config.width = $attrs.width;
+    $scope.config.height = $attrs.height;
+    $scope.edit = function () {
+      $scope.modalInstance = $modal.open({
+        templateUrl: 'templates/iframe-config-dialog.tpl.html',
+        backdrop: 'false',
+        keyboard: 'true',
+        controller: 'IframeConfigModalController',
+        windowClass: 'modal-wide',
+        resolve: {
+          modalConfig: function () {
+            return angular.copy($scope.config);
+          }
+        }
+      });
+      $scope.modalInstance.result.then(function (modalConfig) {
+        $scope.config = modalConfig;
+      });
+    };
+    $scope.trustSrc = function (src) {
+      return $sce.trustAsResourceUrl(src);
+    };
+  }
+]);
+chellPortlet.controller('IframeConfigModalController', [
+  '$scope',
+  '$modalInstance',
+  'modalConfig',
+  function ($scope, $modalInstance, modalConfig) {
+    $scope.modalConfig = modalConfig;
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
+    $scope.ok = function () {
+      $modalInstance.close($scope.modalConfig);
+    };
+  }
 ]);;// Source: build/templates.js
-angular.module('templates-chell-portlet', ['templates/portlet-config-dialog.tpl.html', 'templates/portlet-confirm-dialog.tpl.html', 'templates/portlet-template.tpl.html', 'templates/portlet.tpl.html']);
+angular.module('templates-chell-portlet', ['templates/iframe-config-dialog.tpl.html', 'templates/iframe.tpl.html', 'templates/portlet-config-dialog.tpl.html', 'templates/portlet-confirm-dialog.tpl.html', 'templates/portlet-template.tpl.html', 'templates/portlet.tpl.html']);
+
+angular.module("templates/iframe-config-dialog.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("templates/iframe-config-dialog.tpl.html",
+    "<div class=\"modal-header\">\n" +
+    "    <button class=\"close\" ng-click=\"cancel()\">×</button>\n" +
+    "    <h3>Select Content</h3>\n" +
+    "</div>\n" +
+    "<div class=\"modal-body\">\n" +
+    "    <fieldset>\n" +
+    "        <div class=\"form-group\">\n" +
+    "            <label for=\"inputSrc\">Src</label>\n" +
+    "            <input class=\"form-control\" id=\"inputSrc\" ng-model=\"modalConfig.src\">\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "            <label for=\"inputWidth\">Width</label>\n" +
+    "            <input class=\"form-control\" id=\"inputWidth\" ng-model=\"modalConfig.width\">\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "            <label for=\"inputHeight\">Height</label>\n" +
+    "            <input class=\"form-control\" id=\"inputHeight\" ng-model=\"modalConfig.height\">\n" +
+    "        </div>\n" +
+    "    </fieldset>\n" +
+    "</div>\n" +
+    "<div class=\"modal-footer\">\n" +
+    "    <button class=\"btn\" ng-click=\"cancel()\">Cancel</button>\n" +
+    "    <button class=\"btn btn-primary\" ng-click=\"ok()\">Save</button>\n" +
+    "</div>\n" +
+    "\n" +
+    "");
+}]);
+
+angular.module("templates/iframe.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("templates/iframe.tpl.html",
+    "<div class=\"iframe\">\n" +
+    "    <a visibility-role-id=\"101\" class=\"btn btn-xs\" id=\"iframe-config-button\" ng-hide=\"editor\" ng-click=\"edit()\" style=\"float: right;\"><i class=\"glyphicon glyphicon-cog\"></i></a>\n" +
+    "    <iframe ng-src=\"{{trustSrc(config.src)}}\" width=\"{{config.width}}\" height=\"{{config.height}}\" scrolling=\"auto\" border=\"0\" frameborder=\"0\"></iframe>\n" +
+    "</div>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "");
+}]);
 
 angular.module("templates/portlet-config-dialog.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/portlet-config-dialog.tpl.html",

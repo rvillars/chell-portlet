@@ -59,6 +59,19 @@ chellPortlet.directive('chellPortletContainer', function() {
     };
 });
 
+chellPortlet.directive('chellIframe', function () {
+    return {
+        restrict: 'E',
+        controller: 'IframeController',
+//        scope: {
+//            src:'@src',
+//            height: '@height',
+//            width: '@width'
+//        },
+        templateUrl: 'templates/iframe.tpl.html'
+    };
+});
+
 chellPortlet.directive('chellPortletTemplate', function() {
     return {
         restrict: 'E',

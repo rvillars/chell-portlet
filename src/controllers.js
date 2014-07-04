@@ -126,3 +126,47 @@ chellPortlet.controller('SortableController', function ($scope) {
         $scope.portlets = $scope.origPortlets.slice();
     };
 });
+
+chellPortlet.controller('IframeController', function ($scope, $modal, $attrs, $sce) {
+
+    $scope.config = {};
+    $scope.config.src = $attrs.src;
+    $scope.config.width = $attrs.width;
+    $scope.config.height = $attrs.height;
+
+    $scope.edit = function () {
+        $scope.modalInstance = $modal.open({
+            templateUrl: 'templates/iframe-config-dialog.tpl.html',
+            backdrop: 'false',
+            keyboard: 'true',
+            controller: 'IframeConfigModalController',
+            windowClass: 'modal-wide',
+            resolve: {
+                modalConfig: function () {
+                    return angular.copy($scope.config);
+                }
+            }
+        });
+        $scope.modalInstance.result.then(function (modalConfig) {
+            $scope.config = modalConfig;
+        });
+    };
+
+    $scope.trustSrc = function(src) {
+        return $sce.trustAsResourceUrl(src);
+    };
+});
+
+chellPortlet.controller('IframeConfigModalController', function ($scope, $modalInstance, modalConfig) {
+
+    $scope.modalConfig = modalConfig;
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+
+    $scope.ok = function () {
+        $modalInstance.close($scope.modalConfig);
+    };
+
+});

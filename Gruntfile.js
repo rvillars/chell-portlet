@@ -183,7 +183,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig(grunt.util._.extend(taskConfig, userConfig));
 
-    grunt.registerTask('build', ['jshint', 'ngmin', 'html2js:build', 'concat', 'uglify:src', 'copy', 'less:build']);
+    grunt.registerTask('build', ['jshint', 'ngmin', 'html2js:build', 'concat', 'uglify:src', 'copy', 'less:build', 'example']);
     grunt.registerTask('default', ['watch:hint']);
 
     grunt.registerTask('example', 'Process example .html template', function () {
