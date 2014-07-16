@@ -4,8 +4,19 @@ var chellPortlet = angular.module('chell-portlet', [
     'templates-chell-portlet',
     'ui.bootstrap',
     'ui.sortable',
-    'ui.utils'
-  ]);;// Source: build/directives.js
+    'ui.utils',
+    'pascalprecht.translate'
+  ]);
+chellPortlet.config([
+  '$translateProvider',
+  function ($translateProvider) {
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'i18n/locale-',
+      suffix: '.json'
+    });
+    $translateProvider.preferredLanguage('en');
+  }
+]);;// Source: build/directives.js
 var chellPortlet = angular.module('chell-portlet');
 chellPortlet.directive('chellPortlet', function () {
   return {
@@ -107,7 +118,8 @@ chellPortlet.controller('PortletController', [
   '$modal',
   '$element',
   '$attrs',
-  function ($scope, $modal, $element, $attrs) {
+  '$translate',
+  function ($scope, $modal, $element, $attrs, $translate) {
     $scope.minimized = $scope.$eval($attrs.minimized);
     $scope.fullscreen = $scope.$eval($attrs.fullscreen);
     $scope.pinned = $scope.$eval($attrs.pinned);
@@ -126,7 +138,7 @@ chellPortlet.controller('PortletController', [
         controller: 'PortletModalConfirmController',
         resolve: {
           message: function () {
-            return 'Remove the Portlet?';
+            return $translate('CHELL_PORTLET.CONFIRM_DIALOG.REMOVE_PORTLET_QUESTION');
           }
         }
       });
@@ -319,28 +331,28 @@ angular.module("templates/portlet-config-dialog.tpl.html", []).run(["$templateCa
     "<!-- Dialog for the config button on the portlets-->\n" +
     "<div class=\"modal-content\">\n" +
     "    <div class=\"modal-header\">\n" +
-    "        <button class=\"close\" ng-click=\"cancel()\">×</button>\n" +
-    "        <h3>Adjust widget</h3>\n" +
+    "        <button class=\"close\" ng-click=\"cancel()\" translate>CHELL_PORTLET.CONFIG_DIALOG.CLOSE_CHAR</button>\n" +
+    "        <h3 translate>CHELL_PORTLET.CONFIG_DIALOG.ADJUST_WIDGET</h3>\n" +
     "    </div>\n" +
     "    <div class=\"modal-body\">\n" +
     "        <tabset>\n" +
-    "            <tab heading=\"Portlet Config\">\n" +
+    "            <tab heading=\"{{'CHELL_PORTLET.CONFIG_DIALOG.PORTLET_CONFIG' | translate}}\">\n" +
     "                <div class=\"checkbox\">\n" +
     "                    <label>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"config.borderless\"> Borderless\n" +
+    "                        <input type=\"checkbox\" ng-model=\"config.borderless\">{{'CHELL_PORTLET.CONFIG_DIALOG.BORDERLESS' | translate}}\n" +
     "                    </label>\n" +
     "                </div>\n" +
     "                <div class=\"checkbox\">\n" +
     "                    <label>\n" +
-    "                        <input type=\"checkbox\" ng-model=\"config.pinned\"> Pinned\n" +
+    "                        <input type=\"checkbox\" ng-model=\"config.pinned\">{{'CHELL_PORTLET.CONFIG_DIALOG.PINNED' | translate}}\n" +
     "                    </label>\n" +
     "                </div>\n" +
     "            </tab>\n" +
     "        </tabset>\n" +
     "    </div>\n" +
     "    <div class=\"modal-footer\">\n" +
-    "        <button class=\"btn btn-primary\" ng-click=\"ok()\">Save Changes</button>\n" +
-    "        <button class=\"btn\" ng-click=\"cancel()\">Cancel</button>\n" +
+    "        <button class=\"btn btn-primary\" ng-click=\"ok()\" translate>CHELL_PORTLET.CONFIG_DIALOG.SAVE_CHANGES</button>\n" +
+    "        <button class=\"btn\" ng-click=\"cancel()\" translate>CHELL_PORTLET.CONFIG_DIALOG.CANCEL</button>\n" +
     "    </div>\n" +
     "</div>");
 }]);
@@ -350,15 +362,15 @@ angular.module("templates/portlet-confirm-dialog.tpl.html", []).run(["$templateC
     "<!-- Dialog for the config button on the portlets-->\n" +
     "<div class=\"modal-content\">\n" +
     "    <div class=\"modal-header\">\n" +
-    "        <button class=\"close\" ng-click=\"cancel()\">×</button>\n" +
-    "        <h3>Are you sure?</h3>\n" +
+    "        <button class=\"close\" ng-click=\"cancel()\" translate>CHELL_PORTLET.CONFIRM_DIALOG.CLOSE_CHAR</button>\n" +
+    "        <h3 translate>CHELL_PORTLET.CONFIRM_DIALOG.QUESTION</h3>\n" +
     "    </div>\n" +
     "    <div class=\"modal-body\">\n" +
     "        {{message}}\n" +
     "    </div>\n" +
     "    <div class=\"modal-footer\">\n" +
-    "        <button class=\"btn btn-primary\" ng-click=\"ok()\">Ok</button>\n" +
-    "        <button class=\"btn\" ng-click=\"cancel()\">Cancel</button>\n" +
+    "        <button class=\"btn btn-primary\" ng-click=\"ok()\" translate>CHELL_PORTLET.CONFIRM_DIALOG.OK</button>\n" +
+    "        <button class=\"btn\" ng-click=\"cancel()\" translate>CHELL_PORTLET.CONFIRM_DIALOG.CANCEL</button>\n" +
     "    </div>\n" +
     "</div>");
 }]);

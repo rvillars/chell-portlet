@@ -1,27 +1,27 @@
 <!-- Dialog for the config button on the portlets-->
 <div class="modal-content">
     <div class="modal-header">
-        <button class="close" ng-click="cancel()">×</button>
-        <h3>Adjust widget</h3>
+        <button class="close" ng-click="cancel()" translate>CHELL_PORTLET.CONFIG_DIALOG.CLOSE_CHAR</button>
+        <h3 translate>CHELL_PORTLET.CONFIG_DIALOG.ADJUST_WIDGET</h3>
     </div>
     <div class="modal-body">
         <tabset>
-            <tab heading="Portlet Config">
+            <tab heading="{{'CHELL_PORTLET.CONFIG_DIALOG.PORTLET_CONFIG' | translate}}">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="config.borderless"> Borderless
+                        <input type="checkbox" ng-model="config.borderless">{{'CHELL_PORTLET.CONFIG_DIALOG.BORDERLESS' | translate}}
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="config.pinned"> Pinned
+                        <input type="checkbox" ng-model="config.pinned">{{'CHELL_PORTLET.CONFIG_DIALOG.PINNED' | translate}}
                     </label>
                 </div>
             </tab>
         </tabset>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="ok()">Save Changes</button>
-        <button class="btn" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" ng-click="ok()" translate>CHELL_PORTLET.CONFIG_DIALOG.SAVE_CHANGES</button>
+        <button class="btn" ng-click="cancel()" translate>CHELL_PORTLET.CONFIG_DIALOG.CANCEL</button>
     </div>
 </div>

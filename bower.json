@@ -11,6 +11,8 @@
         "bootstrap": "~3.1",
         "angular-bootstrap": "~0.10.0",
         "angular-ui-sortable": "~0.12",
-        "angular-ui-utils": "~0.1"
+        "angular-ui-utils": "~0.1",
+        "angular-translate": "~2.2.0",
+        "angular-translate-loader-static-files": "~2.2.0"
     }
 }

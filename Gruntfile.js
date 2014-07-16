@@ -12,6 +12,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-ngmin');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-angular-translate');
 
     /**
      * Load in our build configuration file.
@@ -136,6 +137,16 @@ module.exports = function (grunt) {
                         expand: true
                     }
                 ]
+            },
+            i18n: {
+                files: [
+                    {
+                        src: [ '**/*' ],
+                        dest: 'i18n/',
+                        cwd: 'src/i18n',
+                        expand: true
+                    }
+                ]
             }
         },
         less: {
@@ -153,6 +164,15 @@ module.exports = function (grunt) {
                 },
                 src: [ 'src/templates/**/*.tpl.html' ],
                 dest: 'build/templates.js'
+            }
+        },
+        i18nextract: {
+            default_options: {
+                src: [ 'src/*.js', 'src/templates/**/*.tpl.html' ],
+                lang: ['en'],
+                prefix: 'locale-',
+                dest: 'src/i18n',
+                namespace: true
             }
         },
         watch: {
@@ -183,7 +203,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig(grunt.util._.extend(taskConfig, userConfig));
 
-    grunt.registerTask('build', ['jshint', 'ngmin', 'html2js:build', 'concat', 'uglify:src', 'copy', 'less:build', 'example']);
+    grunt.registerTask('build', ['jshint', 'ngmin', 'html2js:build', 'i18nextract', 'concat', 'uglify:src', 'copy', 'less:build', 'example']);
     grunt.registerTask('default', ['watch:hint']);
 
     grunt.registerTask('example', 'Process example .html template', function () {

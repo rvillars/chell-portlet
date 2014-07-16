@@ -2,7 +2,7 @@
 
 var chellPortlet = angular.module('chell-portlet');
 
-chellPortlet.controller('PortletController', function ($scope, $modal, $element, $attrs) {
+chellPortlet.controller('PortletController', function ($scope, $modal, $element, $attrs, $translate) {
 
     $scope.minimized = $scope.$eval($attrs.minimized);
     $scope.fullscreen = $scope.$eval($attrs.fullscreen);
@@ -26,7 +26,7 @@ chellPortlet.controller('PortletController', function ($scope, $modal, $element,
             controller: 'PortletModalConfirmController',
             resolve: {
                 message: function () {
-                    return 'Remove the Portlet?';
+                    return $translate('CHELL_PORTLET.CONFIRM_DIALOG.REMOVE_PORTLET_QUESTION');
                 }
             }
         });
