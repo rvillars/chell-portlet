@@ -169,7 +169,7 @@ module.exports = function (grunt) {
         jsonAngularTranslate: {
             jobName: {
                 options: {
-                    moduleName: 'translations',
+                    moduleName: 'translations'
                 },
                 files: [{
                     expand: true,
