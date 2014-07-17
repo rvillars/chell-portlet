@@ -13,6 +13,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-ngmin');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-angular-translate');
+    grunt.loadNpmTasks('grunt-json-angular-translate');
 
     /**
      * Load in our build configuration file.
@@ -137,16 +138,6 @@ module.exports = function (grunt) {
                         expand: true
                     }
                 ]
-            },
-            i18n: {
-                files: [
-                    {
-                        src: [ '**/*' ],
-                        dest: 'i18n/',
-                        cwd: 'src/i18n',
-                        expand: true
-                    }
-                ]
             }
         },
         less: {
@@ -173,6 +164,20 @@ module.exports = function (grunt) {
                 prefix: 'locale-',
                 dest: 'src/i18n',
                 namespace: true
+            }
+        },
+        jsonAngularTranslate: {
+            jobName: {
+                options: {
+                    moduleName: 'translations',
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'src/i18n',
+                    src: '*.json',
+                    dest: 'build',
+                    ext: '.js'
+                }]
             }
         },
         watch: {
@@ -203,7 +208,7 @@ module.exports = function (grunt) {
 
     grunt.initConfig(grunt.util._.extend(taskConfig, userConfig));
 
-    grunt.registerTask('build', ['jshint', 'ngmin', 'html2js:build', 'i18nextract', 'concat', 'uglify:src', 'copy', 'less:build', 'example']);
+    grunt.registerTask('build', ['jshint', 'ngmin', 'html2js:build', 'i18nextract', 'jsonAngularTranslate', 'concat', 'uglify:src', 'copy', 'less:build', 'example']);
     grunt.registerTask('default', ['watch:hint']);
 
     grunt.registerTask('example', 'Process example .html template', function () {

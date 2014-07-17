@@ -36,6 +36,7 @@ module.exports = {
      * These are the files needed for this module and their order
      */
     module_files: [
+        'locale-en.js',
         'module.js',
         'directives.js',
         'controllers.js'

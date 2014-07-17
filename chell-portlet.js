@@ -1,22 +1,43 @@
 'use strict';
-// Source: build/module.js
+// Source: build/locale-en.js
+try {
+  angular.module('translations');
+} catch (e) {
+  angular.module('translations', ['pascalprecht.translate']);
+}
+
+angular.module('translations').config(function ($translateProvider) {
+  $translateProvider.translations('en', {
+    'CHELL_PORTLET': {
+      'CONFIRM_DIALOG': {
+        'REMOVE_PORTLET_QUESTION': 'Remove the Portlet?',
+        'CLOSE_CHAR': 'x',
+        'QUESTION': 'Are you sure?',
+        'OK': 'OK',
+        'CANCEL': 'Cancel'
+      },
+      'CONFIG_DIALOG': {
+        'PORTLET_CONFIG': 'Portlet Config',
+        'BORDERLESS': 'Borderless',
+        'PINNED': 'Pinned',
+        'CLOSE_CHAR': 'x',
+        'ADJUST_WIDGET': 'Adjust Widget',
+        'SAVE_CHANGES': 'Save Changes',
+        'CANCEL': 'Cancel'
+      }
+    }
+  });
+  $translateProvider.preferredLanguage('en');
+});
+;// Source: build/module.js
 var chellPortlet = angular.module('chell-portlet', [
     'templates-chell-portlet',
+    'translations',
     'ui.bootstrap',
     'ui.sortable',
     'ui.utils',
     'pascalprecht.translate'
-  ]);
-chellPortlet.config([
-  '$translateProvider',
-  function ($translateProvider) {
-    $translateProvider.useStaticFilesLoader({
-      prefix: 'i18n/locale-',
-      suffix: '.json'
-    });
-    $translateProvider.preferredLanguage('en');
-  }
-]);;// Source: build/directives.js
+  ]);;// Source: build/directives.js
 var chellPortlet = angular.module('chell-portlet');
 chellPortlet.directive('chellPortlet', function () {
   return {
