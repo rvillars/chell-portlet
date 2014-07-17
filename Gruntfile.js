@@ -138,6 +138,16 @@ module.exports = function (grunt) {
                         expand: true
                     }
                 ]
+            },
+            i18n: {
+                files: [
+                    {
+                        src: [ '**/*' ],
+                        dest: 'i18n/',
+                        cwd: 'src/i18n',
+                        expand: true
+                    }
+                ]
             }
         },
         less: {
