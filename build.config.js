@@ -28,8 +28,7 @@ module.exports = {
         'bower-components/jquery-ui/ui/jquery.ui.droppable.js',
         
         //Angular-Translate
-        'bower-components/angular-translate/angular-translate.js',
-        'bower-components/angular-translate-loader-static-files/angular-translate-loader-static-files.js'
+        'bower-components/angular-translate/angular-translate.js'
     ],
 
     /**
