@@ -111,7 +111,7 @@ chellPortlet.controller('SortableController', function ($scope) {
     $scope.sortableOptions = {
         connectWith: '.portlet-container',
         iframeFix: false,
-//        items: 'div.box',
+        items: 'div.box',
         opacity: 0.8,
         helper: 'original',
         revert: true,
